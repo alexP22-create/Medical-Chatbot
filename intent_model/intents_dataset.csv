@@ -1,0 +1,65 @@
+text,label
+Care este diagnosticul pacientului Ion Popescu?,get_diagnosis
+Ce diagnostic i s-a pus lui Mihai Andrei?,get_diagnosis
+Ce boală are Ruxandra Pop?,get_diagnosis
+Diagnosticul lui Ionuț Marinescu din 01.02.2024?,get_diagnosis
+Ce diagnostic a primit individul Vasile Munteanu în februarie?,get_diagnosis
+S-a pus vreun diagnostic Mariei Lupu pe 03.03.2023?,get_diagnosis
+Ce scrie la diagnostic pentru Ioana din 2023?,get_diagnosis
+Care e boala diagnosticată în 12.01.2024 pentru Popescu?,get_diagnosis
+Mi poți spune ce diagnostic a avut Radu ieri?,get_diagnosis
+A fost diagnosticat Iancu George recent?,get_diagnosis
+Ce internări are pacientul Ion Popescu?,get_hospitalizations
+A fost internat George Radu în 2023?,get_hospitalizations
+Lista de internări pentru Pacientul Vasile?,get_hospitalizations
+Unde și când a fost internată Gabriela Toma?,get_hospitalizations
+Care sunt datele de internare ale lui Mihai?,get_hospitalizations
+În ce spital a fost internat Andrei?,get_hospitalizations
+Arată-mi toate internările pacientei Ana Ionescu.,get_hospitalizations
+Ce internări recente are Cosmin?,get_hospitalizations
+Este în prezent internat Popescu?,get_hospitalizations
+Câte internări are la activ pacientul Călin?,get_hospitalizations
+Ce tratamente a primit Andreea Popa?,get_treatments
+Ce medicație i s-a administrat lui Radu?,get_treatments
+Care sunt tratamentele recomandate pentru Mihai?,get_treatments
+Cu ce a fost tratat Ion în ianuarie?,get_treatments
+Ce tratament a urmat Maria Pop?,get_treatments
+A primit Andrei terapie medicamentoasă?,get_treatments
+Ce medicamente i s-au prescris Anei?,get_treatments
+Detaliază tratamentele lui Alexandru.,get_treatments
+Ce schema de tratament i s-a aplicat pacientei Oana?,get_treatments
+A fost Raluca sub tratament specific?,get_treatments
+Ce analize a făcut pacientul?,get_lab_results
+Ce rezultate are la sânge Ionuț?,get_lab_results
+Arată-mi analizele medicale ale lui Radu.,get_lab_results
+Care sunt valorile testelor pacientei Loredana?,get_lab_results
+Ce rezultate de laborator are Ion Popescu?,get_lab_results
+Are valori anormale la analize?,get_lab_results
+Ce zice testul PCR pentru Mihai?,get_lab_results
+Dă-mi rezultatele de laborator pentru Andreea.,get_lab_results
+Ce analize i s-au făcut lui Alex?,get_lab_results
+Care este istoricul medical al pacientului Andrei?,get_history
+Istoric medical complet pentru Radu Popa.,get_history
+Spune-mi tot istoricul Anei Ionescu.,get_history
+Ce s-a întâmplat cu pacientul Ion în trecut?,get_history
+Care sunt toate afecțiunile cunoscute ale lui Mihai?,get_history
+Ce istoric are Cosmin în sistem?,get_history
+Dă-mi istoricul complet al consultațiilor pentru Maria.,get_history
+Care sunt bolile trecute ale lui Vasile?,get_history
+Ce știi despre istoricul lui Radu?,get_history
+Rezumatul medical al pacientului George Pop.,summarize_patient
+Fă-mi un rezumat medical pentru pacientul Ion Popescu.,summarize_patient
+Sumar medical complet pentru Andreea.,summarize_patient
+Ce știi despre pacientul Radu într-o propoziție?,summarize_patient
+Poți face un scurt rezumat al fișei lui Mihai?,summarize_patient
+Setează pacientul curent ca fiind Ion Popescu.,set_patient_context
+Vreau să vorbim despre Andreea Ionescu de acum.,set_patient_context
+Schimbă pacientul curent cu Mihai Gheorghe.,set_patient_context
+Șterge contextul anterior.,clear_context
+Uităm tot despre pacientul precedent.,clear_context
+Resetează sesiunea.,clear_context
+Nu mai vreau să ținem minte pacientul.,clear_context
+Ce a mâncat Ion azi?,unknown
+Care este hobby-ul lui Mihai?,unknown
+Câți ani are o pisică în ani de om?,unknown
+Ce program are medicul?,unknown
