@@ -1,27 +1,29 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import re
+import json
 
-tokenizer = AutoTokenizer.from_pretrained("./intent_model")
-model = AutoModelForSequenceClassification.from_pretrained("./intent_model")
+# Constants
+tokenizer_path = "./intent_model/intent_model"
+model_path = "./intent_model/intent_model"
+mapping_path = model_path + "/id2label.json"
 
-intents = [
-    "get_diagnosis",
-    "get_history",
-    "get_hospitalizations",
-    "get_treatments",
-    "get_lab_results",
-    "summarize_patient",
-    "unknown"
-]
+# Load tokenizer and model
+tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
+model = AutoModelForSequenceClassification.from_pretrained(model_path)
+
+# Load label mapping
+with open(mapping_path, "r") as f:
+    id2label = json.load(f)
 
 def classify_intent(question):
-    inputs = tokenizer(question, return_tensors="pt", truncation=True)
+    inputs = tokenizer(question, return_tensors="pt", truncation=True, padding=True)
     with torch.no_grad():
         outputs = model(**inputs)
     logits = outputs.logits
-    predicted_class = torch.argmax(logits, dim=1).item()
-    return intents[predicted_class]
+    predicted_class_id = torch.argmax(logits, dim=1).item()
+    return id2label[str(predicted_class_id)]
+
 
 def extract_slots(text):
     slots = {}

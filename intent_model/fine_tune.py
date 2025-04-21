@@ -1,35 +1,49 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
 from datasets import load_dataset, Dataset
 import pandas as pd
+import json
 
-# Încarcă datele
+# Load dataset
 df = pd.read_csv("intents_dataset.csv")
-label2id = {label: i for i, label in enumerate(df['label'].unique())}
+
+# Create label mappings
+label2id = {label: i for i, label in enumerate(sorted(df['label'].unique()))}
 id2label = {i: label for label, i in label2id.items()}
 df['label_id'] = df['label'].map(label2id)
 
+# Convert to HuggingFace dataset
 dataset = Dataset.from_pandas(df)
+dataset = dataset.remove_columns(["__index_level_0__"]) if "__index_level_0__" in dataset.column_names else dataset
+dataset = dataset.train_test_split(test_size=0.2)
 
-# Tokenizer + model
+# Load tokenizer & model
 model_name = "readerbench/RoBERT-base"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=len(label2id))
+model = AutoModelForSequenceClassification.from_pretrained(
+    model_name,
+    num_labels=len(label2id),
+    id2label=id2label,
+    label2id=label2id
+)
 
-# Tokenizare
+# Tokenization function
 def tokenize(example):
     return tokenizer(example["text"], padding="max_length", truncation=True)
 
-dataset = dataset.train_test_split(test_size=0.2)
-tokenized = dataset.map(tokenize)
+# Tokenize the dataset
+tokenized = dataset.map(tokenize, batched=True)
+tokenized = tokenized.rename_column("label_id", "labels")
+tokenized.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
 
-# Argumente pentru fine-tuning
+# Training arguments
 training_args = TrainingArguments(
     output_dir="./results",
-    evaluation_strategy="epoch",
-    num_train_epochs=5,
+    num_train_epochs=3,
     per_device_train_batch_size=8,
     per_device_eval_batch_size=8,
     save_total_limit=1,
+    evaluation_strategy="epoch",  # this works across all recent versions
+    save_strategy="epoch",
     logging_dir="./logs",
     logging_steps=10,
     load_best_model_at_end=True
@@ -44,9 +58,11 @@ trainer = Trainer(
     tokenizer=tokenizer
 )
 
-# Start training
+# Train the model
 trainer.train()
 
-# Salvează modelul fine-tunat
-model.save_pretrained("./models/model")
-tokenizer.save_pretrained("./models/")
+# Save everything
+model.save_pretrained("./intent_model")
+tokenizer.save_pretrained("./intent_model")
+with open("./intent_model/id2label.json", "w", encoding="utf-8") as f:
+    json.dump(id2label, f, ensure_ascii=False, indent=2)
