@@ -52,6 +52,15 @@ Fă-mi un rezumat medical pentru pacientul Ion Popescu.,summarize_patient
 Sumar medical complet pentru Andreea.,summarize_patient
 Ce știi despre pacientul Radu într-o propoziție?,summarize_patient
 Poți face un scurt rezumat al fișei lui Mihai?,summarize_patient
+Care este numărul de pacienți diagnosticați cu diabet în ultimul an?,get_statistics
+Ce procent din pacienți au avut cel puțin o internare în 2023?,get_statistics
+Câți pacienți cu diagnosticul de hipertensiune au fost internați în ianuarie 2024?,get_statistics
+Care este media numărului de internări per pacient în ultimii 2 ani?,get_statistics
+Câți pacienți au fost diagnosticați cu cancer pulmonar înainte de 2020?,get_statistics
+Câți pacienți au primit tratament cu antibiotice luna trecută?,get_statistics
+Câți pacienți cu diagnostic de COVID-19 au fost externați vindecați?,get_statistics
+Care este diagnosticul cel mai frecvent întâlnit în 2023?,get_statistics
+Care este evoluția numărului de pacienți diagnosticați cu diabet în ultimii 5 ani?,get_statistics
 Setează pacientul curent ca fiind Ion Popescu.,set_patient_context
 Vreau să vorbim despre Andreea Ionescu de acum.,set_patient_context
 Schimbă pacientul curent cu Mihai Gheorghe.,set_patient_context

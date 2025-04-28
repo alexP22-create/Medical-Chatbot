@@ -36,4 +36,8 @@ def extract_slots(text):
     if name_match:
         slots["nume_pacient"] = name_match.group(1)
 
+    diagnosis_match = re.search(r"diagnosticul (?:este|fiind)?[:]? ([^\.]+)", text, re.IGNORECASE)
+    if diagnosis_match:
+        slots["diagnostic"] = diagnosis_match.group(1).strip()
+
     return slots
