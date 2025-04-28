@@ -87,3 +87,5 @@ simptome	„tuse, febră”	list
 3. Instalează Microsoft Visual C++ Redistributable 2015–2022
 Descarcă și instalează de aici: 👉 https://aka.ms/vs/16/release/vc_redist.x64.exe
 pip install transformers datasets torch scikit-learn pandas
+4. pip install firebase-admin
+
